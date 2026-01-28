@@ -52,6 +52,7 @@ const Hero = () => {
 
         <motion.a
           href="#contact"
+          aria-label="Request a quote for custom furniture"
           className="inline-block px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold 
                      text-base md:text-lg rounded-xl shadow-lg hover:shadow-2xl hover:shadow-amber-500/50
                      transition-all transform hover:scale-105 hover:-translate-y-1"
@@ -67,6 +68,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
+          aria-hidden="true"
         >
           <div className="w-6 h-10 border-2 border-amber-400 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-amber-400 rounded-full mt-2 animate-bounce"></div>

@@ -111,12 +111,14 @@ const Portfolio = () => {
             {/* Navigation Arrows */}
             <button
               onClick={goToPrevious}
+              aria-label="Previous project slide"
               className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-amber-400 text-white hover:text-black p-4 rounded-full transition-all duration-300 backdrop-blur-md border border-white/20"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
             <button
               onClick={goToNext}
+              aria-label="Next project slide"
               className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-amber-400 text-white hover:text-black p-4 rounded-full transition-all duration-300 backdrop-blur-md border border-white/20"
             >
               <ChevronRight className="h-6 w-6" />
@@ -129,6 +131,7 @@ const Portfolio = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
+                aria-label={`Go to project slide ${index + 1}`}
                 className={`transition-all duration-500 rounded-full ${index === currentIndex
                   ? "w-16 h-2.5 bg-amber-500"
                   : "w-2.5 h-2.5 bg-slate-200 hover:bg-amber-200"

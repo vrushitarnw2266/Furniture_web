@@ -24,16 +24,17 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Instagram, link: "https://instagram.com" },
-                { Icon: Facebook, link: "https://facebook.com" },
-                { Icon: Twitter, link: "https://twitter.com" },
-                { Icon: Mail, link: "mailto:amit.panchal@furniture.com" }
+                { Icon: Instagram, link: "https://instagram.com", label: "Instagram" },
+                { Icon: Facebook, link: "https://facebook.com", label: "Facebook" },
+                { Icon: Twitter, link: "https://twitter.com", label: "Twitter" },
+                { Icon: Mail, link: "mailto:amit.panchal@furniture.com", label: "Email" }
               ].map((item, idx) => (
                 <a
                   key={idx}
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Follow Amit Panchal on ${item.label}`}
                   className="h-10 w-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 hover:border-amber-400 hover:text-amber-400 transition-all duration-300 hover:shadow-[0_0_15px_rgba(251,191,36,0.2)]"
                 >
                   <item.Icon size={18} />
