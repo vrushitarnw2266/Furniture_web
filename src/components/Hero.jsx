@@ -18,14 +18,6 @@ const Hero = () => {
       {/* Enhanced Overlay with Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-gray-900/80" />
 
-      {/* Floating Texture (Adds Premium Look) */}
-      <motion.div
-        className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={{ duration: 2 }}
-      />
-
       {/* Content */}
       <motion.div
         className="relative z-10 max-w-4xl px-6"
