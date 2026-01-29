@@ -1,5 +1,7 @@
-import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
-import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Clock, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import emailjs from "@emailjs/browser";
+import logger from "../utils/logger";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,27 @@ const Contact = () => {
   });
 
   const [focusedField, setFocusedField] = useState(null);
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSending, setIsSending] = useState(false);
+  const formRef = useRef();
+
+  // Check variables on mount
+  useEffect(() => {
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (import.meta.env.DEV) {
+      logger.info("EmailJS Configuration Check (v4)", {
+        hasService: !!SERVICE_ID,
+        hasTemplate: !!TEMPLATE_ID,
+        hasPublicKey: !!PUBLIC_KEY
+      });
+      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+        logger.warn("ACTION REQUIRED: Restart your development server (npm run dev) to load the .env file.");
+      }
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,10 +43,53 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSending(true);
+    setStatus({ type: "", message: "" });
+
+    // IMPORTANT: Replace these with your actual EmailJS credentials
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Debugging: Log status
+    logger.debug("Form Submission Started", { service: SERVICE_ID, template: TEMPLATE_ID });
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      logger.error("Configuration Missing during submission");
+      setStatus({
+        type: "error",
+        message: "Configuration missing. Please restart your dev server after adding .env variables."
+      });
+      setIsSending(false);
+      return;
+    }
+
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
+        publicKey: PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          logger.info("Email sent successfully");
+          setStatus({
+            type: "success",
+            message: "Thank you! Your message has been sent successfully."
+          });
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          logger.error("EmailJS Error details:", error);
+          setStatus({
+            type: "error",
+            message: `Error: ${error?.text || "Unknown error"}. Check your EmailJS dashboard settings.`
+          });
+        }
+      )
+      .finally(() => {
+        setIsSending(false);
+        // Clear status after 5 seconds
+        setTimeout(() => setStatus({ type: "", message: "" }), 5000);
+      });
   };
 
   return (
@@ -96,7 +162,7 @@ const Contact = () => {
               <p className="text-slate-500 font-medium">We'll get back to you within 24 hours.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
@@ -163,11 +229,31 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="mt-4 px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold text-lg rounded-xl shadow-lg shadow-amber-500/50 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-amber-500/70 flex items-center justify-center gap-3 group"
+                disabled={isSending}
+                className={`mt-4 px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold text-lg rounded-xl shadow-lg transition-all duration-300 transform flex items-center justify-center gap-3 group ${isSending ? "opacity-70 cursor-not-allowed scale-100" : "shadow-amber-500/50 hover:scale-[1.02] hover:shadow-amber-500/70"
+                  }`}
               >
-                Send Message
-                <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                {isSending ? (
+                  <>
+                    Sending...
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </>
+                )}
               </button>
+
+              {/* Status Messages */}
+              {status.message && (
+                <div className={`flex items-center gap-3 p-4 rounded-2xl animate-in fade-in slide-in-from-top-2 duration-300 ${status.type === "success" ? "bg-green-50 text-green-700 border border-green-100" : "bg-red-50 text-red-700 border border-red-100"
+                  }`}>
+                  {status.type === "success" ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
+                  <p className="font-bold text-sm">{status.message}</p>
+                </div>
+              )}
             </form>
           </div>
         </div>
