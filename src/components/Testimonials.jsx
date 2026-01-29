@@ -7,7 +7,7 @@ const testimonials = [
         role: "Homeowner",
         word: "Outstanding Quality",
         text: "The bespoke wardrobe Amit built for my bedroom is truly a piece of art. The attention to detail in the wood joinery is exceptional.",
-        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80"
     },
     {
         name: "Priya Patel",

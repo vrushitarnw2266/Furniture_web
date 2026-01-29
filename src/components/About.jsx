@@ -1,12 +1,12 @@
 const categories = [
   {
     name: "Luxury Wardrobes",
-    img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
     desc: "Custom-built closet systems designed for maximum elegance and storage efficiency."
   },
   {
     name: "Bespoke Sofas",
-    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
     desc: "Premium handcrafted sofas tailored to your comfort and aesthetic preferences."
   },
   {
@@ -21,12 +21,12 @@ const categories = [
   },
   {
     name: "Modern Kitchens",
-    img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80",
     desc: "Functional ART—precision-engineered kitchen cabinetry and layouts."
   },
   {
     name: "Premium Mattresses",
-    img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80",
     desc: "High-grade materials ensuring the ultimate rest for a productive life."
   },
   {
@@ -36,17 +36,17 @@ const categories = [
   },
   {
     name: "Storage Solutions",
-    img: "https://images.unsplash.com/photo-1591129841117-3adfd313e34f?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1591129841117-3adfd313e34f?auto=format&fit=crop&w=800&q=80",
     desc: "Intelligent storage furniture that maximizes space without sacrificing style."
   },
   {
     name: "Lighting Decor",
-    img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80",
     desc: "Integrated lighting solutions that highlight the beauty of architectural woodwork."
   },
   {
     name: "Living Spaces",
-    img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80",
+    img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
     desc: "Complete interior transformations creating harmonious and luxury living environments."
   }
 ];

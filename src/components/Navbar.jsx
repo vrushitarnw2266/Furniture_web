@@ -16,21 +16,31 @@ const Navbar = () => {
     setOpen(false);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handleLogoClick();
+    }
+  };
+
   return (
     <nav className="fixed w-full z-50 bg-[#05070a]/60 text-white backdrop-blur-2xl border-b border-white/10 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.5)]">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-8 lg:px-12">
         {/* Logo */}
         <div
           onClick={handleLogoClick}
-          className="flex items-center gap-4 cursor-pointer select-none group"
+          onKeyDown={handleKeyDown}
+          role="link"
+          tabIndex="0"
+          aria-label="Amit Panchal - Back to Home"
+          className="flex items-center gap-4 cursor-pointer select-none group focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-4 focus:ring-offset-slate-900 rounded-xl transition-all"
         >
           <div className="relative h-11 w-11 flex items-center justify-center bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl shadow-[0_0_20px_rgba(251,191,36,0.2)] group-hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] transition-all duration-500 transform group-hover:-rotate-6">
             <Hammer className="text-black h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
           </div>
           <div className="flex flex-col">
-            <h1 className="text-xl md:text-2xl font-black tracking-tighter text-white group-hover:text-amber-400 transition-colors duration-300">
+            <h2 className="text-xl md:text-2xl font-black tracking-tighter text-white group-hover:text-amber-400 transition-colors duration-300">
               AMIT PANCHAL
-            </h1>
+            </h2>
             <span className="text-[9px] uppercase tracking-[0.3em] text-amber-400/80 font-bold -mt-0.5">Architectural Carpentry</span>
           </div>
         </div>
