@@ -9,6 +9,9 @@ const Hero = () => {
       {/* Optimized Background Image for LCP */}
       <img
         src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80"
+        srcSet="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80 800w,
+                https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80 1600w"
+        sizes="100vw"
         alt="Premium Carpentry & Architectural Furnishing"
         className="absolute inset-0 w-full h-full object-cover"
         fetchpriority="high"
