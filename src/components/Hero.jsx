@@ -4,13 +4,17 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-screen flex items-center justify-center text-center 
-                 bg-cover bg-center overflow-hidden"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80')",
-      }}
+      className="relative h-screen flex items-center justify-center text-center overflow-hidden"
     >
+      {/* Optimized Background Image for LCP */}
+      <img
+        src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80"
+        alt="Premium Carpentry & Architectural Furnishing"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchpriority="high"
+        loading="eager"
+        decoding="sync"
+      />
       {/* Enhanced Overlay with Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-gray-900/80" />
 

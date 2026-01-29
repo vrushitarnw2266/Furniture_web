@@ -78,6 +78,8 @@ const About = () => (
                 src={cat.img}
                 alt={cat.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
               />
               {/* Overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />

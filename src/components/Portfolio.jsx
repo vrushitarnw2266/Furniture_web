@@ -93,6 +93,8 @@ const Portfolio = () => {
                     src={project.img}
                     alt={project.title}
                     className="w-full h-[500px] md:h-[650px] object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-10">

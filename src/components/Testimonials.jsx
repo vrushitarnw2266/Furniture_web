@@ -58,8 +58,10 @@ const Testimonials = () => {
                                     <div className="relative mb-8">
                                         <img
                                             src={t.photo}
-                                            alt={t.name}
+                                            alt={`${t.name} - ${t.role}`}
                                             className="w-20 h-20 rounded-full object-cover border-4 border-amber-400 shadow-xl"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                         <div className="absolute -bottom-2 -right-2 bg-amber-400 p-1.5 rounded-lg shadow-md">
                                             <Heart size={14} className="text-black fill-current" />

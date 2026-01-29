@@ -165,8 +165,9 @@ const Contact = () => {
             <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
+                  <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -177,11 +178,13 @@ const Contact = () => {
                     className={`w-full bg-slate-50 border-2 rounded-2xl px-6 py-4 outline-none transition-all duration-300 font-medium text-slate-900 ${focusedField === "name" ? "border-amber-400 shadow-lg shadow-amber-400/10 ring-4 ring-amber-400/5" : "border-slate-100"
                       }`}
                     required
+                    aria-required="true"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
+                  <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -192,13 +195,15 @@ const Contact = () => {
                     className={`w-full bg-slate-50 border-2 rounded-2xl px-6 py-4 outline-none transition-all duration-300 font-medium text-slate-900 ${focusedField === "email" ? "border-amber-400 shadow-lg shadow-amber-400/10 ring-4 ring-amber-400/5" : "border-slate-100"
                       }`}
                     required
+                    aria-required="true"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Subject</label>
+                <label htmlFor="subject" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Subject</label>
                 <input
+                  id="subject"
                   type="text"
                   name="subject"
                   value={formData.subject}
@@ -212,8 +217,9 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Your Message</label>
+                <label htmlFor="message" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Your Message</label>
                 <textarea
+                  id="message"
                   name="message"
                   rows="4"
                   value={formData.message}
@@ -224,6 +230,7 @@ const Contact = () => {
                   className={`w-full bg-slate-50 border-2 rounded-2xl px-6 py-5 outline-none transition-all duration-300 font-medium text-slate-900 resize-none ${focusedField === "message" ? "border-amber-400 shadow-lg shadow-amber-400/10 ring-4 ring-amber-400/5" : "border-slate-100"
                     }`}
                   required
+                  aria-required="true"
                 ></textarea>
               </div>
 
